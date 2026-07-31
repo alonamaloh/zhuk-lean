@@ -25,6 +25,10 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | Def 2.7 star powers | `starPower`, `realize_starPower_succ` |
 | Def 3.1 essential relations | `IsEssential` |
 | **Prop 3.5** absorption forbids essential relations | `not_isEssential_of_witnesses` |
+| Prop 3.4 arity reduction | `hasEssential_of_succ`, `hasEssential_of_le` |
+| Cor 3.6 absorption bounds essential arity | `not_hasEssential_of_witnesses` |
+| Def 3.2 essential for a partition | `IsEssentialOn` |
+| **Lemma 3.7** regrouping | `hasEssential_of_essentialOn` |
 | Def 4.1–4.2 subdirect, neighborhood, left center | `Subdirect`, `nbhd`, `leftCenter` |
 | Lemma 4.3(a)–(d) | `closedUnder_nbhd`, `nbhd_nonempty`, `closedUnder_leftCenter`, `realize_mem_nbhd_realize` |
 | **Theorem 5.1** the enlargement step | `center_step` |
@@ -33,10 +37,8 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | Def 6.2 central absorption | `CentrallyAbsorbs` |
 | **Corollary 6.3** Zhuk's center theorem | `zhuk_center` |
 
-**Not yet done:** Prop 3.4 (arity reduction), Cor 3.6, Lemma 3.7 (regrouping),
-Theorem 3.10 (relational description), Lemma 7.1 (doubling), Cor 8.1 (ternary
-collapse). What remains is exactly the Part II machinery and the doubling argument
-that together collapse the witnessing arity to three.
+**Not yet done:** Theorem 3.10 (relational description), Lemma 7.1 (doubling),
+Cor 8.1 (ternary collapse).
 
 ## What Mathlib supplied
 
@@ -78,6 +80,14 @@ None is an error; all are simplifications.
    it for finite idempotent `A`, `B`; the proof needs only that `B` has no nonempty
    proper binary absorbing subuniverse, plus idempotence of `A` to bundle the
    neighborhood as a subuniverse. `center_central` assumes only that.
+
+5. **The live-set encoding of regrouping works.** Stated literally, the blueprint's
+   induction over "an arbitrary finite index set" changes the index *type* at every
+   step. Fixing an ambient index type with a block function `I → Fin m` and a live
+   set `J : Finset I` — the plan's proposal — keeps the relation put; deleting an
+   element is `J.erase u`, projection becomes "stop quantifying over that
+   coordinate", and only the base case transports, once. `hasEssential_of_essentialOn`
+   is proved that way.
 
 ## Frictions
 
