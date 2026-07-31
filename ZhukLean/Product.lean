@@ -79,7 +79,40 @@ theorem realize_prod {α : Type*} (t : L.Term α) (v : α → A × B) :
       simp only [Term.realize, ih]
       rfl
 
+/-- First projection of a binary product, as a homomorphism. -/
+def fstHom : (A × B) →[L] A where
+  toFun := Prod.fst
+  map_fun' _ _ := rfl
+  map_rel' _ _ h := h.1
+
+/-- Second projection of a binary product, as a homomorphism. -/
+def sndHom : (A × B) →[L] B where
+  toFun := Prod.snd
+  map_fun' _ _ := rfl
+  map_rel' _ _ h := h.2
+
+@[simp] theorem fstHom_apply (p : A × B) : fstHom (L := L) p = p.1 := rfl
+@[simp] theorem sndHom_apply (p : A × B) : sndHom (L := L) p = p.2 := rfl
+
 end BinaryProduct
+
+section Snoc
+
+variable {L : Language} {A : Type*} [L.Structure A]
+
+/-- Appending a last coordinate commutes with the operations, because `Fin.snoc` acts
+coordinatewise. Needed to see that the doubled relation of the doubling trick is a
+subuniverse. -/
+theorem snoc_funMap {n p : ℕ} (f : L.Functions p) (a : Fin p → (Fin n → A)) (b : Fin p → A) :
+    Fin.snoc (Structure.funMap f a) (Structure.funMap f b)
+      = Structure.funMap f (fun i => Fin.snoc (a i) (b i) : Fin p → (Fin (n + 1) → A)) := by
+  funext r
+  refine Fin.lastCases ?_ ?_ r
+  · simp [funMap_pi]
+  · intro r'
+    simp [funMap_pi]
+
+end Snoc
 
 section Reindex
 

@@ -8,3 +8,5 @@ import ZhukLean.Center
 import ZhukLean.Step
 import ZhukLean.Absorbs
 import ZhukLean.Central
+import ZhukLean.Doubling
+import ZhukLean.Ternary

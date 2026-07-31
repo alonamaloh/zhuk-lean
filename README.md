@@ -38,10 +38,15 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | **Theorem 6.1** Zhuk: centrality of the left center | `center_central` |
 | Def 6.2 central absorption | `CentrallyAbsorbs` |
 | **Corollary 6.3** Zhuk's center theorem | `zhuk_center` |
+| Step 1 of doubling, the generation property (‡) | `betaSet_subset_closure` |
+| Step 3 of doubling, the linking relation misses `B'×B'` | `linking_disjoint` |
+| **Lemma 7.1** Zhuk–Kozik essential doubling | `hasEssential_doubled` |
+| **Corollary 8.1** central absorption is ternary | `exists_ternary_witnesses` |
+| **Theorem 0.1** main theorem | `zhuk_main` |
 
-**Not yet done:** Lemma 7.1 (the Zhuk–Kozik doubling trick) and Cor 8.1 (the
-ternary collapse, which follows from it in a few lines). Parts I and II are
-complete; Part III is complete except for doubling.
+**The blueprint is fully formalized.** Every numbered statement of
+`zhuk_centers.tex` that carries mathematical content has a Lean counterpart, and
+`zhuk_main` is blueprint Theorem 0.1.
 
 ## What Mathlib supplied
 
@@ -92,9 +97,26 @@ None is an error; all are simplifications.
    coordinate", and only the base case transports, once. `hasEssential_of_essentialOn`
    is proved that way.
 
+6. **The doubled relation needs no coordinate reversal.** The blueprint writes `R'`
+   over `A₀ × ⋯ × Aₙ × Aₙ × ⋯ × A₀`, with the second half reversed. Essentiality
+   does not depend on the order of the coordinates, so `doubled` is indexed by the
+   sum type `Fin (n+1) ⊕ Fin (n+1)` and the reversal disappears. Transport to
+   `Fin (2n+2)` is then free: `hasEssential_of_essentialOn`'s base case *is* a
+   reindexing, so regrouping doubles as the transport lemma.
+7. **Remark 7.2 is right, and load-bearing.** Step 1 has to be a standalone
+   universally quantified statement (`betaSet_subset_closure`) proved before `b` is
+   fixed, because Step 3 instantiates it at `b'` and then again at the `b'''` that
+   the first instantiation produced. Formalized in the source's order it would not
+   typecheck.
+
 ## Frictions
 
 - Mathlib's `ModelTheory` imports do not transitively bring in the tactic library;
   `fin_cases` needed `import Mathlib.Tactic.FinCases` explicitly.
 - `Structure` bundles `funMap` and `RelMap` together, so every product instance must
   supply a `RelMap` even though the blueprint's signatures are purely algebraic.
+- Tactic imports keep biting: `fin_cases`, `ring` and `norm_num` are each absent
+  until imported. `omega` is available and handles `min`/`max` on `ℕ`, which covered
+  every arithmetic obligation in the enlargement induction.
+- Binder-type inference on subtype coercions: `fun g => (g : A × A).1` elaborates
+  `g : A × A` rather than coercing from `↥S`. Naming the valuation fixes it.
