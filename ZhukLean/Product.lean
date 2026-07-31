@@ -13,8 +13,8 @@ Mathlib has no `Structure` instance on a dependent product: `ModelTheory.Ultrapr
 goes straight to the quotient via `Prestructure` and never exposes `∀ i, M i`. The
 blueprint needs plain products (Definition 1.8), so we build one here.
 
-This is Layer 2 of `PLAN_ZHUK_CENTERS.md`, and the only part of the blueprint's
-Part I that Mathlib does not already supply.
+This is the only part of the blueprint's Part I that Mathlib does not already
+supply.
 -/
 
 open FirstOrder Language

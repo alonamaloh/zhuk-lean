@@ -18,8 +18,8 @@ deleting one of its elements. Formalized literally that would change the index
 *type* at every step (`I` becomes `{i // i ≠ u}`), and every relation would have to
 be transported.
 
-`PLAN_ZHUK_CENTERS.md` proposes instead a *block function* `block : I → Fin m`
-together with a **live set** `J : Finset I`. The ambient index type is fixed, the
+We use instead a *block function* `block : I → Fin m` together with a **live
+set** `J : Finset I`. The ambient index type is fixed, the
 relation never moves, and deleting an element is `J.erase u`. Projection in the
 blueprint's sense becomes "stop quantifying over that coordinate", and the
 blueprint's `R ∩ {x : x u ∈ S}` is the only relation ever formed.

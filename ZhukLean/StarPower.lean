@@ -12,10 +12,9 @@ import Mathlib.Data.Fin.Tuple.Basic
 Blueprint Definition 2.7. The blueprint gives `t ^ *ℓ` arity `k ^ ℓ` and decomposes
 an index `p ∈ [k ^ (ℓ+1)]` as `p = (j-1) * k ^ ℓ + q` by Euclidean division.
 
-`PLAN_ZHUK_CENTERS.md` proposes instead indexing the variables of `t ^ *ℓ` by the
-type `Fin ℓ → Fin k`, which has `k ^ ℓ` elements. Then "block `j`, position `q`"
-is just `Fin.cons j q` — peeling off the first argument of a function — and the
-division disappears. This file is the test of that claim.
+We index the variables of `t ^ *ℓ` by the type `Fin ℓ → Fin k` instead, which has
+`k ^ ℓ` elements. Then "block `j`, position `q`" is just `Fin.cons j q` — peeling
+off the first argument of a function — and the division disappears.
 -/
 
 open FirstOrder Language

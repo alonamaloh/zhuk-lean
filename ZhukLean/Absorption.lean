@@ -9,8 +9,7 @@ import Mathlib.Tactic.FinCases
 /-!
 # Idempotence, absorption, and Taylor identities
 
-Layer 4 of `PLAN_ZHUK_CENTERS.md`; Part I §2 of the blueprint
-(`~/claude/zeb/zhuk_centers.tex`).
+Part I §2 of the blueprint.
 
 The one thing to get right here is the *quantifier shape* of absorption
 (blueprint Definition 2.1 and Remark 2.2): the condition constrains a tuple
