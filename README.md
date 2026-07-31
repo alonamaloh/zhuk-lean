@@ -120,3 +120,7 @@ None is an error; all are simplifications.
   every arithmetic obligation in the enlargement induction.
 - Binder-type inference on subtype coercions: `fun g => (g : A × A).1` elaborates
   `g : A × A` rather than coercing from `↥S`. Naming the valuation fixes it.
+
+## License
+
+[CC BY 4.0](LICENSE). Share and adapt with attribution.

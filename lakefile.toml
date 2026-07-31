@@ -7,6 +7,7 @@ defaultTargets = ["ZhukLean"]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
 relaxedAutoImplicit = false
 weak.linter.mathlibStandardSet = true
+weak.linter.style.header = false # this project is CC BY 4.0, not Apache 2.0
 maxSynthPendingDepth = 3
 
 [[require]]
