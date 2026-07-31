@@ -29,6 +29,8 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | Cor 3.6 absorption bounds essential arity | `not_hasEssential_of_witnesses` |
 | Def 3.2 essential for a partition | `IsEssentialOn` |
 | **Lemma 3.7** regrouping | `hasEssential_of_essentialOn` |
+| Lemma 3.9 the algebra of `m`-ary term operations | `termOps` |
+| **Theorem 3.10** relational description (Barto–Kazda) | `exists_witnesses_of_not_hasEssential` |
 | Def 4.1–4.2 subdirect, neighborhood, left center | `Subdirect`, `nbhd`, `leftCenter` |
 | Lemma 4.3(a)–(d) | `closedUnder_nbhd`, `nbhd_nonempty`, `closedUnder_leftCenter`, `realize_mem_nbhd_realize` |
 | **Theorem 5.1** the enlargement step | `center_step` |
@@ -37,8 +39,9 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | Def 6.2 central absorption | `CentrallyAbsorbs` |
 | **Corollary 6.3** Zhuk's center theorem | `zhuk_center` |
 
-**Not yet done:** Theorem 3.10 (relational description), Lemma 7.1 (doubling),
-Cor 8.1 (ternary collapse).
+**Not yet done:** Lemma 7.1 (the Zhuk–Kozik doubling trick) and Cor 8.1 (the
+ternary collapse, which follows from it in a few lines). Parts I and II are
+complete; Part III is complete except for doubling.
 
 ## What Mathlib supplied
 

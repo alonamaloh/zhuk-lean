@@ -3,6 +3,7 @@ import ZhukLean.Absorption
 import ZhukLean.StarPower
 import ZhukLean.Essential
 import ZhukLean.Regrouping
+import ZhukLean.Relational
 import ZhukLean.Center
 import ZhukLean.Step
 import ZhukLean.Absorbs
