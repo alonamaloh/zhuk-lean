@@ -123,4 +123,6 @@ None is an error; all are simplifications.
 
 ## License
 
-[CC BY 4.0](LICENSE). Share and adapt with attribution.
+[Apache 2.0](LICENSE), matching Mathlib and the rest of the Lean ecosystem. Note
+that the companion blueprint at <https://github.com/alonamaloh/csp-zhuk-centers>
+is CC BY 4.0: a prose document, where a Creative Commons licence is appropriate.
