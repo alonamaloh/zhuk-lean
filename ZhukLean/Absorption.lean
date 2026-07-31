@@ -96,6 +96,14 @@ theorem BinAbsorbs.absorbs {E D : Set M} (h : BinAbsorbs L E D) : Absorbs L E D 
   obtain ⟨t, ht⟩ := h
   exact ⟨2, t, ht⟩
 
+/-- A witness over any finite variable type gives absorption, by transporting along
+`Fintype.equivFin`. This is what lets the star powers (whose variables are indexed by
+functions) feed the `Fin m`-indexed `Absorbs`. -/
+theorem Absorbs.of_finite {E D : Set M} {V : Type*} [Finite V] {t : L.Term V}
+    (h : Witnesses E D t) : Absorbs L E D := by
+  have : Fintype V := Fintype.ofFinite V
+  exact ⟨Fintype.card V, t.relabel (Fintype.equivFin V), h.relabelEquiv (Fintype.equivFin V)⟩
+
 /-- Blueprint Remark 2.3: the whole universe absorbs itself, witnessed by a variable. -/
 theorem witnesses_univ (D : Set M) : Witnesses Set.univ D (L := L) (var 0 : L.Term (Fin 1)) := by
   intro _ _ _ _

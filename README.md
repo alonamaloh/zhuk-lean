@@ -29,10 +29,14 @@ Lean 4.32.2, Mathlib v4.32.2. `lake build`; warm builds are ~2 s.
 | Lemma 4.3(a)–(d) | `closedUnder_nbhd`, `nbhd_nonempty`, `closedUnder_leftCenter`, `realize_mem_nbhd_realize` |
 | **Theorem 5.1** the enlargement step | `center_step` |
 | **Theorem 5.2** Zhuk: the left center absorbs | `leftCenter_witnesses` |
+| **Theorem 6.1** Zhuk: centrality of the left center | `center_central` |
+| Def 6.2 central absorption | `CentrallyAbsorbs` |
+| **Corollary 6.3** Zhuk's center theorem | `zhuk_center` |
 
 **Not yet done:** Prop 3.4 (arity reduction), Cor 3.6, Lemma 3.7 (regrouping),
-Theorem 3.10 (relational description), Theorem 6.1 (centrality), Def 6.2 / Cor 6.3
-(central absorption), Lemma 7.1 (doubling), Cor 8.1 (ternary collapse).
+Theorem 3.10 (relational description), Lemma 7.1 (doubling), Cor 8.1 (ternary
+collapse). What remains is exactly the Part II machinery and the doubling argument
+that together collapse the witnessing arity to three.
 
 ## What Mathlib supplied
 
@@ -68,6 +72,12 @@ None is an error; all are simplifications.
    "normal form for the generators" with `p ≤ q` exists only to index a sorted
    enumeration — classifying *variables* by which of the three generator blocks they
    lie in removes the sorting, and Lemma 1.20 (block-respecting enumeration) with it.
+   **Confirmed**: `center_central` is proved with the selector
+   `fun g => if g.2 = a then 1 else 0` and no enumeration anywhere.
+4. **Theorem 6.1 needs neither finiteness nor a Taylor term.** The blueprint states
+   it for finite idempotent `A`, `B`; the proof needs only that `B` has no nonempty
+   proper binary absorbing subuniverse, plus idempotence of `A` to bundle the
+   neighborhood as a subuniverse. `center_central` assumes only that.
 
 ## Frictions
 
